@@ -6,6 +6,8 @@ const API_KEY_OPENAI =
   "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";
 
 const MAGA = 7308891764;
+const ADMIN = 344486749;
+const GROUP_CHAT_ID = -1002157737498;
 
 const bot = new TelegramBot(API_KEY_BOT, {
   polling: true,
@@ -93,6 +95,8 @@ bot.on("text", async (msg) => {
         gameIsActive = false;
       }
     }
+
+    if (msg.chat.id === ADMIN) bot.sendMessage(GROUP_CHAT_ID, msg.text);
   } catch (error) {
     console.log(error.error.message);
   }
